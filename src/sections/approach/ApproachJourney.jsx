@@ -48,7 +48,6 @@ export const approachStages = [
 export default function ApproachJourney() {
   const { ref, progress } = useScrollProgress({ offsetTop: 0 });
   
-  // Calculate active index (0 to 6)
   const totalStages = approachStages.length;
   const activeIndex = Math.min(
     Math.floor(progress * totalStages),
@@ -58,29 +57,20 @@ export default function ApproachJourney() {
   const activeStage = approachStages[activeIndex];
 
   return (
-    <section id="approach-journey" ref={ref} className="approach-journey-wrapper">
+    <section id="approach-journey" ref={ref} className="approach-journey-wrapper full-width-section bg-white text-navy">
       
       {/* DESKTOP STICKY VERSION */}
       <div className="approach-journey-sticky desktop-only">
         <div className="container approach-journey-layout">
           
-          {/* Left Side: Content */}
+          {/* Left Side (30%): Content */}
           <div className="journey-content-side">
-             <div className="journey-progress-indicator">
-                {approachStages.map((stage, idx) => (
-                  <div 
-                    key={idx} 
-                    className={`progress-dot ${idx === activeIndex ? 'active' : ''} ${idx < activeIndex ? 'completed' : ''}`}
-                  ></div>
-                ))}
-             </div>
-             
              <div className="journey-text-content">
                 <span className="label journey-label text-blue">
                   {activeStage.number} / {activeStage.title}
                 </span>
                 
-                <h2 key={`h2-${activeIndex}`} className="journey-heading h2 animate-fade-up">
+                <h2 key={`h2-${activeIndex}`} className="journey-heading animate-fade-up">
                   {activeStage.headline.split('\n').map((line, i) => (
                     <span key={i}>{line}<br/></span>
                   ))}
@@ -92,40 +82,80 @@ export default function ApproachJourney() {
                   ))}
                 </div>
              </div>
+
+             <div className="journey-progress-indicator">
+                {approachStages.map((stage, idx) => (
+                  <div key={idx} className={`indicator-item ${idx === activeIndex ? 'active' : ''}`}>
+                    <span className="indicator-num">{stage.number}</span>
+                    <span className="indicator-name">{stage.title}</span>
+                  </div>
+                ))}
+             </div>
           </div>
 
-          {/* Right Side: Visual System */}
+          {/* Right Side (70%): Visual System */}
           <div className={`journey-visual-side stage-${activeIndex}`}>
              <div className="visual-canvas">
                 
-                {/* Abstract system elements that transform based on activeIndex via CSS */}
-                <div className="v-node v-project">PROJECT</div>
+                {/* 
+                  Nodes logic:
+                  Stage 0: PROJECT, MARKET, AUDIENCE, PLACE, COMPETITION, OBJECTIVE
+                  Stage 1: Reorganize to INSIGHT, POSITIONING, AUDIENCE, OPPORTUNITY
+                  Stage 2: Linear INSIGHT -> POSITIONING -> MESSAGE -> CHANNEL
+                  Stage 3: Strategy to Idea -> Typography, Shapes, Layouts
+                  Stage 4: Idea to Communication Tree -> SOCIAL, DIGITAL, OOH -> CONTENT, WEBSITE, CAMPAIGN
+                  Stage 5: Activation -> Signals running down tree
+                  Stage 6: Loop -> IDEA -> MARKET -> DATA -> LEARNING -> OPTIMIZATION
+                */}
                 
-                <div className="v-node v-market">MARKET</div>
-                <div className="v-node v-audience">AUDIENCE</div>
-                <div className="v-node v-comp">COMPETITION</div>
+                {/* Stage 0-1-2 Base Nodes */}
+                <div className="v-node node-project">PROJECT</div>
+                <div className="v-node node-market">MARKET</div>
+                <div className="v-node node-audience">AUDIENCE</div>
+                <div className="v-node node-place">PLACE</div>
+                <div className="v-node node-competition">COMPETITION</div>
+                <div className="v-node node-objective">OBJECTIVE</div>
                 
-                <div className="v-node v-insight">INSIGHT</div>
-                <div className="v-node v-strategy">STRATEGY</div>
-                <div className="v-node v-idea">IDEA</div>
+                {/* Stage 1-2 Derived Nodes */}
+                <div className="v-node node-insight">INSIGHT</div>
+                <div className="v-node node-positioning">POSITIONING</div>
+                <div className="v-node node-opportunity">OPPORTUNITY</div>
+                <div className="v-node node-message">MESSAGE</div>
+                <div className="v-node node-channel">CHANNEL</div>
                 
-                <div className="v-node v-social">SOCIAL</div>
-                <div className="v-node v-digital">DIGITAL</div>
-                <div className="v-node v-ooh">OOH</div>
+                {/* Connecting Lines for Paths */}
+                <div className="v-path path-1"></div>
+                <div className="v-path path-2"></div>
+                <div className="v-path path-3"></div>
                 
-                <div className="v-line v-line-1"></div>
-                <div className="v-line v-line-2"></div>
-                <div className="v-line v-line-3"></div>
-                <div className="v-line v-line-4"></div>
+                {/* Stage 3 Creative Nodes */}
+                <div className="v-shape shape-circle"></div>
+                <div className="v-shape shape-rect"></div>
+                <div className="v-node node-typography">TYPOGRAPHY</div>
+                <div className="v-node node-visual">VISUAL</div>
+                <div className="v-node node-motion">MOTION</div>
+                <div className="v-node node-idea-main">IDEA</div>
                 
-                <div className="v-circle v-circle-burst"></div>
-                <div className="v-circle v-loop"></div>
+                {/* Stage 4 Communication Branches */}
+                <div className="v-tree tree-social">SOCIAL</div>
+                <div className="v-tree tree-digital">DIGITAL</div>
+                <div className="v-tree tree-ooh">OOH</div>
+                <div className="v-tree tree-content">CONTENT</div>
+                <div className="v-tree tree-website">WEBSITE</div>
+                <div className="v-tree tree-campaign">CAMPAIGN</div>
                 
-                <div className="v-signal v-signal-1"></div>
-                <div className="v-signal v-signal-2"></div>
+                {/* Stage 5 Activation Signals */}
+                <div className="v-signal sig-1"></div>
+                <div className="v-signal sig-2"></div>
+                <div className="v-signal sig-3"></div>
                 
-                <div className="v-node v-data">DATA</div>
-                <div className="v-node v-learn">LEARNING</div>
+                {/* Stage 6 Measurement Loop */}
+                <div className="v-loop-track"></div>
+                <div className="v-loop-node loop-market">MARKET</div>
+                <div className="v-loop-node loop-data">DATA</div>
+                <div className="v-loop-node loop-learning">LEARNING</div>
+                <div className="v-loop-node loop-optimization">OPTIMIZATION</div>
+
              </div>
           </div>
 
@@ -141,14 +171,13 @@ export default function ApproachJourney() {
         <div className="mobile-journey-list">
           {approachStages.map((stage, index) => (
             <div key={index} className="mobile-journey-item reveal-element">
-              <div className="mobile-journey-visual-min stage-mobile">
-                 {/* Mini visual representation of the stage */}
-                 <div className="min-dot"></div>
+              <div className="mobile-journey-visual-min">
+                 <div className="min-num">{stage.number}</div>
                  {index < approachStages.length - 1 && <div className="min-line"></div>}
               </div>
               
               <div className="mobile-journey-content">
-                <span className="label text-blue">{stage.number} / {stage.title}</span>
+                <span className="label text-blue">{stage.title}</span>
                 <h3 className="h3" style={{ marginTop: '0.5rem', marginBottom: '1rem' }}>
                   {stage.headline.split('\n').map((line, i) => (
                     <span key={i}>{line}<br/></span>

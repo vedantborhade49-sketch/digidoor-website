@@ -1,9 +1,23 @@
+import { useEffect } from 'react';
+import WorkHero from '../sections/work/WorkHero';
+import FeaturedWork from '../sections/work/FeaturedWork';
+import BeyondCampaign from '../sections/work/BeyondCampaign';
+import Capabilities from '../sections/work/Capabilities';
+import WorkCTA from '../sections/work/WorkCTA';
+import './Work.css';
+
 export default function Work() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <main className="app container section" style={{ minHeight: '100vh', paddingTop: '150px' }}>
-      <span className="label">OUR WORK</span>
-      <h1 className="h1">Visual portfolio / case-study focused</h1>
-      <p className="body" style={{ marginTop: '2rem' }}>Page is under construction.</p>
+    <main className="work-page">
+      <WorkHero />
+      <FeaturedWork />
+      <BeyondCampaign />
+      <Capabilities />
+      <WorkCTA />
     </main>
   );
 }

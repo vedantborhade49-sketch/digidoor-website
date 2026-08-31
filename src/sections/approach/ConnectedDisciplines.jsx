@@ -4,30 +4,40 @@ export default function ConnectedDisciplines() {
   const ref = useScrollReveal();
 
   return (
-    <section ref={ref} className="connected-disciplines container section-padding">
-      <div className="connected-header reveal-element">
-        <span className="label">THE POWER IS IN THE CONNECTION</span>
-        <h2 className="connected-heading">
-          Strategy doesn't live in one room.<br />
-          Neither does creativity.
-        </h2>
-        <p className="body connected-body">
-          The strongest work happens when different disciplines work together from the beginning.
-        </p>
-      </div>
+    <section ref={ref} className="connected-disciplines full-width-section section-padding bg-offwhite text-navy">
+      <div className="container">
+        <div className="connected-header reveal-element">
+          <span className="label text-blue">THE POWER IS IN THE CONNECTION</span>
+          <h2 className="connected-heading h2-major">
+            Strategy doesn't live in one room.<br />
+            Neither does creativity.
+          </h2>
+          <p className="body connected-body">
+            The strongest work happens when different disciplines work together from the beginning.
+          </p>
+        </div>
 
-      <div className="connected-network reveal-element" style={{ transitionDelay: '0.2s' }}>
-        <div className="network-item top">STRATEGY</div>
-        <div className="network-line v1"></div>
-        <div className="network-item center-left">CREATIVE</div>
-        <div className="network-line h1"></div>
-        <div className="network-item center">COMMUNICATION</div>
-        <div className="network-line h2"></div>
-        <div className="network-item center-right">DIGITAL</div>
-        <div className="network-line v2"></div>
-        <div className="network-item bottom-left">PERFORMANCE</div>
-        <div className="network-line h3"></div>
-        <div className="network-item bottom-right">TECHNOLOGY</div>
+        <div className="connected-diagram reveal-element" style={{ transitionDelay: '0.2s' }}>
+          <div className="diagram-row">
+            <div className="diagram-node">STRATEGY</div>
+          </div>
+          <div className="diagram-vert-line"></div>
+          <div className="diagram-row main-axis">
+            <div className="diagram-node">CREATIVE</div>
+            <div className="diagram-horiz-line"></div>
+            <div className="diagram-node center-hub">DIGIDOOR</div>
+            <div className="diagram-horiz-line"></div>
+            <div className="diagram-node">DIGITAL</div>
+          </div>
+          <div className="diagram-vert-line"></div>
+          <div className="diagram-row">
+            <div className="diagram-node">PERFORMANCE</div>
+          </div>
+          <div className="diagram-vert-line"></div>
+          <div className="diagram-row">
+            <div className="diagram-node">COMMUNICATION</div>
+          </div>
+        </div>
       </div>
     </section>
   );

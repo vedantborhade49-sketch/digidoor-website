@@ -4,8 +4,8 @@ export default function ApproachPhilosophy() {
   const ref = useScrollReveal();
 
   return (
-    <section ref={ref} className="approach-philosophy container section-padding">
-      <div className="philosophy-inner reveal-element">
+    <section ref={ref} className="approach-philosophy full-width-section section-padding bg-ice text-navy">
+      <div className="container philosophy-inner reveal-element">
         <span className="label text-blue">OUR BELIEF</span>
         <h2 className="philosophy-heading">
           The best marketing<br />

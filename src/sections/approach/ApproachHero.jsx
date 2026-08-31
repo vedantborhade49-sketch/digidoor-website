@@ -11,28 +11,23 @@ export default function ApproachHero() {
   };
 
   return (
-    <section ref={ref} className="approach-hero container section-padding">
-      <div className="approach-hero-inner">
+    <section ref={ref} className="approach-hero full-width-section">
+      <div className="container approach-hero-inner">
         <div className="reveal-element approach-hero-label-wrapper">
-          <span className="label">OUR APPROACH</span>
+          <span className="label text-blue">OUR APPROACH</span>
         </div>
         
         <div className="approach-hero-main">
           <h1 className="reveal-element approach-hero-heading">
             We don't start<br />
-            with the answer.<br />
-            <br />
-            <span className="text-blue">We start</span><br />
-            <span className="text-blue">with the question.</span>
+            with the answer.
           </h1>
           
           <div className="approach-hero-aside">
             <p className="reveal-element body approach-hero-body" style={{ transitionDelay: '0.1s' }}>
-              Every real-estate project is different.
+              Every real-estate project begins with a different question.
               <br /><br />
-              Our job is to understand what makes it matter,
-              find the opportunity, and turn that understanding
-              into work that moves people and business.
+              We find the right one.
             </p>
 
             <div className="reveal-element approach-hero-ctas" style={{ transitionDelay: '0.2s' }}>
@@ -43,19 +38,18 @@ export default function ApproachHero() {
                 SEE HOW WE WORK <span className="arrow-down" aria-hidden="true">↓</span>
               </button>
             </div>
+            
+            {/* Minimal Animated Dot System */}
+            <div className="hero-insight-visual reveal-element" style={{ transitionDelay: '0.4s' }} aria-hidden="true">
+               <div className="h-dot"></div>
+               <div className="h-line line-1"></div>
+               <div className="h-dot h-dot-2"></div>
+               <div className="h-line line-2"></div>
+               <div className="h-dot h-dot-3"></div>
+               <div className="h-line line-3"></div>
+               <div className="h-dot h-dot-4"></div>
+            </div>
           </div>
-        </div>
-      </div>
-      
-      {/* Animated Hero Visual System */}
-      <div className="approach-hero-visual" aria-hidden="true">
-        <div className="hero-dot"></div>
-        <div className="hero-line h-line"></div>
-        <div className="hero-dot right"></div>
-        <div className="hero-line v-line"></div>
-        <div className="hero-dot bottom"></div>
-        <div className="hero-grid-lines">
-          <span></span><span></span><span></span>
         </div>
       </div>
     </section>

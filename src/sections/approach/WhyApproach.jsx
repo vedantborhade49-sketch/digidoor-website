@@ -4,11 +4,11 @@ export default function WhyApproach() {
   const ref = useScrollReveal();
 
   return (
-    <section ref={ref} className="approach-why container section-padding">
-      <div className="approach-why-layout">
+    <section ref={ref} className="approach-why full-width-section section-padding bg-navy text-white">
+      <div className="container approach-why-layout">
         <div className="approach-why-left reveal-element">
-          <span className="label">WHY THE APPROACH MATTERS</span>
-          <h2 className="approach-why-heading">
+          <span className="label text-blue">WHY THE APPROACH MATTERS</span>
+          <h2 className="approach-why-heading h2-major">
             Every project has<br />something to say.<br />
             <br />
             The challenge is finding<br />what people should hear.

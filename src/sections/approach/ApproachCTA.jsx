@@ -5,9 +5,9 @@ export default function ApproachCTA() {
   const ref = useScrollReveal();
 
   return (
-    <section ref={ref} className="approach-cta container section-padding">
-      <div className="approach-cta-content reveal-element">
-        <h2 className="approach-cta-heading">
+    <section ref={ref} className="approach-cta full-width-section section-padding bg-navy text-white">
+      <div className="container approach-cta-content reveal-element">
+        <h2 className="approach-cta-heading h2-major">
           Have a project<br />
           worth moving?
         </h2>

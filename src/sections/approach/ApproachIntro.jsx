@@ -4,12 +4,12 @@ export default function ApproachIntro() {
   const ref = useScrollReveal();
 
   return (
-    <section ref={ref} className="approach-intro container section-padding">
-      <div className="approach-intro-inner">
+    <section ref={ref} className="approach-intro full-width-section section-padding bg-ice text-navy">
+      <div className="container approach-intro-inner">
         <div className="reveal-element">
-          <span className="label">THE DIGIDOOR METHOD</span>
+          <span className="label text-blue">THE DIGIDOOR METHOD</span>
         </div>
-        <h2 className="reveal-element approach-intro-heading" style={{ transitionDelay: '0.1s' }}>
+        <h2 className="reveal-element approach-intro-heading h2-normal" style={{ transitionDelay: '0.1s' }}>
           Understand first.<br />
           Create second.<br />
           Execute with purpose.

@@ -1,0 +1,215 @@
+/* Navbar Base */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 90px;
+  z-index: 100;
+  transition: background-color 0.4s ease, border-color 0.4s ease, backdrop-filter 0.4s ease;
+  background-color: transparent;
+  border-bottom: 1px solid transparent;
+  display: flex;
+  align-items: center;
+}
+
+.navbar.scrolled {
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(8, 43, 92, 0.08); /* subtle navy border */
+}
+
+/* Container */
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* Logo */
+.navbar-logo {
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: 0.1em;
+  color: var(--color-navy);
+  text-decoration: none;
+  z-index: 102; /* Above mobile overlay */
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+/* Desktop Menu */
+.navbar-desktop-menu {
+  display: none;
+  align-items: center;
+  gap: 3rem;
+}
+
+@media (min-width: 1024px) {
+  .navbar-desktop-menu {
+    display: flex;
+  }
+}
+
+.navbar-links {
+  display: flex;
+  list-style: none;
+  gap: 3rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-link {
+  color: var(--color-text);
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
+  padding: 0.5rem 0;
+}
+
+.navbar-link:hover,
+.navbar-link:focus-visible,
+.navbar-link.active {
+  color: var(--color-blue);
+  outline: none;
+}
+
+/* Subtle Animated Underline for links */
+.navbar-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 1px;
+  background-color: var(--color-blue);
+  transition: width 0.3s ease;
+}
+
+.navbar-link:hover::after,
+.navbar-link:focus-visible::after,
+.navbar-link.active::after {
+  width: 100%;
+}
+
+/* CTA Button */
+.navbar-cta {
+  color: var(--color-navy);
+  text-decoration: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.navbar-cta .arrow {
+  transition: transform 0.3s ease;
+}
+
+.navbar-cta:hover,
+.navbar-cta:focus-visible,
+.navbar-cta.active {
+  color: var(--color-blue);
+  outline: none;
+}
+
+.navbar-cta:hover .arrow,
+.navbar-cta:focus-visible .arrow {
+  transform: translateX(4px);
+}
+
+/* Mobile Toggle Button */
+.navbar-mobile-toggle {
+  display: block;
+  background: none;
+  border: none;
+  color: var(--color-navy);
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-right: -0.5rem; /* align with grid */
+  z-index: 102; /* Above mobile overlay */
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+@media (min-width: 1024px) {
+  .navbar-mobile-toggle {
+    display: none;
+  }
+}
+
+/* Mobile Overlay */
+.navbar-mobile-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--color-background); /* Use the slightly tinted background */
+  z-index: 101;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-mobile-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.navbar-mobile-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar-mobile-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+  transform: translateY(20px);
+  transition: transform 0.4s ease;
+}
+
+.navbar-mobile-overlay.open .navbar-mobile-links {
+  transform: translateY(0);
+}
+
+.navbar-mobile-links a {
+  text-decoration: none;
+  color: var(--color-navy);
+  transition: color 0.3s ease;
+  display: inline-flex;
+}
+
+.navbar-mobile-links a:hover,
+.navbar-mobile-links a:focus-visible,
+.navbar-mobile-links a.active {
+  color: var(--color-blue);
+  outline: none;
+}
+
+.mobile-cta {
+  color: var(--color-blue) !important;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.mobile-cta .arrow {
+  transition: transform 0.3s ease;
+}
+
+.mobile-cta:hover .arrow,
+.mobile-cta:focus-visible .arrow {
+  transform: translateX(8px);
+}

@@ -1,0 +1,585 @@
+/* ==========================================================================
+   DIGIDOOR APPROACH PAGE
+   ========================================================================== */
+
+.approach-page {
+  background-color: var(--color-white);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.section-padding {
+  padding-top: clamp(5rem, 8vw, 10rem);
+  padding-bottom: clamp(5rem, 8vw, 10rem);
+}
+
+.text-blue {
+  color: var(--color-blue);
+}
+
+/* Base animations */
+.reveal-element {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   01. HERO
+   ========================================================================== */
+.approach-hero {
+  background-color: var(--color-background);
+  color: var(--color-navy);
+  padding-top: clamp(150px, 15vw, 200px);
+  position: relative;
+  overflow: hidden;
+}
+
+.approach-hero-inner {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3rem, 5vw, 5rem);
+  position: relative;
+  z-index: 2;
+}
+
+.approach-hero-main {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+@media (min-width: 1024px) {
+  .approach-hero-main {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+}
+
+.approach-hero-heading {
+  font-size: clamp(3.5rem, 7vw, 7rem);
+  line-height: 1.05;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  max-width: 800px;
+}
+
+.approach-hero-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  max-width: 400px;
+}
+
+/* Hero visual system */
+.approach-hero-visual {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+.hero-dot {
+  position: absolute;
+  width: 6px; height: 6px;
+  background-color: var(--color-blue);
+  border-radius: 50%;
+}
+.hero-dot:nth-child(1) { top: 30%; left: 10%; }
+.hero-dot.right { top: 30%; right: 20%; }
+.hero-dot.bottom { bottom: 20%; right: 20%; }
+
+.hero-line {
+  position: absolute;
+  background-color: rgba(18, 100, 216, 0.2);
+}
+.hero-line.h-line { top: 30%; left: 10%; right: 20%; height: 1px; transform-origin: left; animation: drawH 2s ease forwards; }
+.hero-line.v-line { top: 30%; bottom: 20%; right: 20%; width: 1px; transform-origin: top; animation: drawV 2s ease 1s forwards backwards; }
+
+@keyframes drawH { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes drawV { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+
+/* ==========================================================================
+   02. WHY APPROACH
+   ========================================================================== */
+.approach-why {
+  background-color: var(--color-navy);
+  color: var(--color-white);
+}
+.approach-why-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+@media (min-width: 1024px) {
+  .approach-why-layout { grid-template-columns: 1.2fr 1fr; gap: 6rem; }
+}
+.approach-why-left { display: flex; flex-direction: column; gap: 1.5rem; }
+.approach-why-left .label { color: var(--color-blue); }
+.approach-why-heading {
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  line-height: 1.1;
+  font-weight: 500;
+}
+.approach-why-right { display: flex; flex-direction: column; gap: 1.5rem; justify-content: flex-end; }
+.approach-why-right .body { color: rgba(255,255,255,0.8); }
+
+/* ==========================================================================
+   03. INTRO
+   ========================================================================== */
+.approach-intro {
+  background-color: var(--color-ice);
+  color: var(--color-navy);
+  text-align: center;
+}
+.approach-intro-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+.approach-intro-heading {
+  font-size: clamp(3rem, 5vw, 5rem);
+  line-height: 1.05;
+}
+
+/* ==========================================================================
+   04. THE JOURNEY (STICKY 7-STAGE EXPERIENCE)
+   ========================================================================== */
+.approach-journey-wrapper {
+  background-color: var(--color-white);
+  /* The scrolling track height based on 7 stages. 500vh gives ample scroll time */
+  height: 500vh;
+  position: relative;
+}
+
+.approach-journey-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.approach-journey-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+  height: 100%;
+  padding-top: 80px; /* navbar offset */
+}
+@media (min-width: 1024px) {
+  .approach-journey-layout { grid-template-columns: 1fr 1fr; }
+}
+
+/* Left side content */
+.journey-content-side {
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  align-items: center;
+  height: 100%;
+}
+.journey-progress-indicator {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.progress-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-background);
+  border: 1px solid rgba(8,43,92,0.2);
+  transition: all 0.4s ease;
+}
+.progress-dot.active { background-color: var(--color-blue); border-color: var(--color-blue); transform: scale(1.5); }
+.progress-dot.completed { background-color: var(--color-navy); border-color: var(--color-navy); }
+
+.journey-text-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 450px;
+}
+.journey-heading {
+  font-size: clamp(2.5rem, 3.5vw, 3.5rem);
+  line-height: 1.1;
+  font-weight: 500;
+  color: var(--color-navy);
+}
+.animate-fade-up { animation: fadeUp 0.6s cubic-bezier(0.2,0.8,0.2,1) forwards; }
+.animate-fade-up-delay { animation: fadeUp 0.6s cubic-bezier(0.2,0.8,0.2,1) 0.1s forwards; opacity: 0; }
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Right side visual system */
+.journey-visual-side {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.visual-canvas {
+  position: relative;
+  width: 500px;
+  height: 500px;
+}
+
+/* System Nodes */
+.v-node {
+  position: absolute;
+  padding: 0.5rem 1rem;
+  background: var(--color-background);
+  border: 1px solid rgba(8,43,92,0.1);
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  color: var(--color-navy);
+  transform: translate(-50%, -50%);
+  transition: all 0.8s cubic-bezier(0.2,0.8,0.2,1);
+  opacity: 0;
+  z-index: 10;
+}
+.v-line {
+  position: absolute;
+  background-color: rgba(8,43,92,0.2);
+  transition: all 0.8s cubic-bezier(0.2,0.8,0.2,1);
+  opacity: 0;
+}
+.v-circle {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px dashed rgba(8,43,92,0.2);
+  transform: translate(-50%, -50%);
+  transition: all 0.8s ease;
+  opacity: 0;
+}
+.v-signal {
+  position: absolute;
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--color-blue);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+
+/* Initial Layouts / Positions */
+.v-project { top: 50%; left: 50%; }
+.v-market { top: 20%; left: 20%; }
+.v-audience { top: 80%; left: 80%; }
+.v-comp { top: 20%; left: 80%; }
+.v-insight { top: 50%; left: 50%; }
+.v-strategy { top: 50%; left: 50%; }
+.v-idea { top: 50%; left: 50%; }
+.v-social { top: 50%; left: 50%; }
+.v-digital { top: 50%; left: 50%; }
+.v-ooh { top: 50%; left: 50%; }
+.v-data { top: 50%; left: 50%; }
+.v-learn { top: 50%; left: 50%; }
+
+/* STAGE 0: UNDERSTAND */
+.stage-0 .v-project { opacity: 1; border-color: var(--color-blue); }
+.stage-0 .v-market { opacity: 1; transform: translate(-50%, -50%) rotate(-10deg); }
+.stage-0 .v-audience { opacity: 1; transform: translate(-50%, -50%) rotate(15deg); }
+.stage-0 .v-comp { opacity: 1; transform: translate(-50%, -50%) rotate(5deg); }
+
+/* STAGE 1: DEFINE */
+.stage-1 .v-project { opacity: 1; top: 30%; }
+.stage-1 .v-insight { opacity: 1; top: 70%; border-color: var(--color-blue); }
+.stage-1 .v-line-1 { opacity: 1; width: 1px; height: 30%; left: 50%; top: 35%; }
+
+/* STAGE 2: STRATEGIZE */
+.stage-2 .v-project { opacity: 0.5; top: 20%; }
+.stage-2 .v-insight { opacity: 0.5; top: 40%; }
+.stage-2 .v-strategy { opacity: 1; top: 70%; border-color: var(--color-blue); }
+.stage-2 .v-line-1 { opacity: 0.5; width: 1px; height: 15%; left: 50%; top: 22.5%; }
+.stage-2 .v-line-2 { opacity: 1; width: 1px; height: 25%; left: 50%; top: 42.5%; }
+
+/* STAGE 3: CREATE */
+.stage-3 .v-strategy { opacity: 1; top: 20%; }
+.stage-3 .v-line-2 { opacity: 1; width: 1px; height: 20%; left: 50%; top: 25%; }
+.stage-3 .v-idea { opacity: 1; top: 60%; background: var(--color-blue); color: var(--color-white); border-radius: 50px; padding: 1rem 2rem; font-size: 1rem; }
+.stage-3 .v-circle-burst { opacity: 1; width: 300px; height: 300px; top: 60%; left: 50%; border-color: var(--color-blue); animation: spin 20s linear infinite; }
+
+/* STAGE 4: COMMUNICATE */
+.stage-4 .v-idea { opacity: 1; top: 20%; background: var(--color-background); color: var(--color-navy); border-radius: 4px; padding: 0.5rem 1rem; font-size: 0.75rem; }
+.stage-4 .v-line-3 { opacity: 1; width: 300px; height: 1px; left: 100px; top: 40%; }
+.stage-4 .v-line-1 { opacity: 1; width: 1px; height: 20%; left: 50%; top: 20%; } /* connect idea to horizontal */
+.stage-4 .v-line-2 { opacity: 1; width: 1px; height: 30%; left: 100px; top: 40%; } /* down to social */
+.stage-4 .v-line-4 { opacity: 1; width: 1px; height: 30%; left: 400px; top: 40%; } /* down to ooh */
+.stage-4 .v-line-5 { opacity: 1; width: 1px; height: 30%; left: 250px; top: 40%; } /* down to digital */
+.stage-4 .v-social { opacity: 1; top: 70%; left: 100px; }
+.stage-4 .v-digital { opacity: 1; top: 70%; left: 250px; border-color: var(--color-blue); }
+.stage-4 .v-ooh { opacity: 1; top: 70%; left: 400px; }
+
+/* STAGE 5: ACTIVATE (Signals moving) */
+.stage-5 .v-idea, .stage-5 .v-social, .stage-5 .v-digital, .stage-5 .v-ooh { opacity: 1; }
+.stage-5 .v-idea { top: 20%; }
+.stage-5 .v-social { top: 70%; left: 100px; }
+.stage-5 .v-digital { top: 70%; left: 250px; }
+.stage-5 .v-ooh { top: 70%; left: 400px; }
+.stage-5 .v-line-3 { opacity: 1; width: 300px; height: 1px; left: 100px; top: 40%; }
+.stage-5 .v-line-1 { opacity: 1; width: 1px; height: 20%; left: 50%; top: 20%; } 
+.stage-5 .v-line-2 { opacity: 1; width: 1px; height: 30%; left: 100px; top: 40%; } 
+.stage-5 .v-line-4 { opacity: 1; width: 1px; height: 30%; left: 400px; top: 40%; } 
+.stage-5 .v-signal-1 { opacity: 1; top: 30%; left: 50%; animation: pingPong 2s ease infinite; }
+.stage-5 .v-signal-2 { opacity: 1; top: 50%; left: 100px; animation: pingPong 1.5s ease infinite reverse; }
+
+/* STAGE 6: MEASURE & GROW (Loop) */
+.stage-6 .v-loop { opacity: 1; width: 350px; height: 350px; top: 50%; left: 50%; border-style: solid; border-color: var(--color-blue); animation: spin 10s linear infinite; border-top-color: transparent; }
+.stage-6 .v-idea { opacity: 1; top: 15%; }
+.stage-6 .v-digital { opacity: 1; top: 85%; }
+.stage-6 .v-data { opacity: 1; left: 15%; top: 50%; }
+.stage-6 .v-learn { opacity: 1; left: 85%; top: 50%; }
+
+@keyframes spin { 100% { transform: translate(-50%, -50%) rotate(360deg); } }
+@keyframes pingPong { 0% { transform: translate(-50%, -50%) scale(1); opacity: 1; } 50% { transform: translate(-50%, -50%) scale(1.5); opacity: 0.5; } 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; } }
+
+
+/* Mobile overrides for Journey */
+.desktop-only { display: block; }
+.mobile-only { display: none; }
+@media (max-width: 1023px) {
+  .desktop-only { display: none; }
+  .mobile-only { display: block; }
+  .approach-journey-wrapper { height: auto; }
+}
+
+.mobile-journey-header { margin-bottom: 3rem; }
+.mobile-journey-list { display: flex; flex-direction: column; gap: 4rem; }
+.mobile-journey-item { display: flex; gap: 2rem; position: relative; }
+.mobile-journey-visual-min { display: flex; flex-direction: column; align-items: center; width: 20px; }
+.min-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--color-blue); z-index: 2; }
+.min-line { width: 1px; height: calc(100% + 4rem); background: rgba(8,43,92,0.1); position: absolute; top: 12px; z-index: 1; }
+.mobile-journey-content { flex: 1; }
+
+
+/* ==========================================================================
+   05. CONNECTED DISCIPLINES
+   ========================================================================== */
+.connected-disciplines {
+  background-color: var(--color-background);
+  color: var(--color-navy);
+}
+.connected-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto clamp(4rem, 8vw, 6rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+.connected-heading {
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  line-height: 1.1;
+  font-weight: 500;
+}
+.connected-network {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  height: 400px;
+}
+@media (max-width: 768px) {
+  .connected-network { display: flex; flex-direction: column; gap: 1rem; height: auto; align-items: center; }
+  .network-item { position: relative !important; top: auto !important; left: auto !important; transform: none !important; }
+  .network-line { display: none; }
+}
+.network-item {
+  position: absolute;
+  padding: 1rem 2rem;
+  background: var(--color-white);
+  border: 1px solid rgba(8,43,92,0.1);
+  border-radius: 4px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+  cursor: default;
+}
+.network-item:hover {
+  background: var(--color-blue);
+  color: var(--color-white);
+  border-color: var(--color-blue);
+  transform: translate(-50%, -55%);
+}
+.network-item.top { top: 10%; left: 50%; }
+.network-item.center-left { top: 50%; left: 20%; }
+.network-item.center { top: 50%; left: 50%; z-index: 2;}
+.network-item.center-right { top: 50%; left: 80%; }
+.network-item.bottom-left { top: 90%; left: 35%; }
+.network-item.bottom-right { top: 90%; left: 65%; }
+
+.network-line {
+  position: absolute;
+  background: rgba(8,43,92,0.1);
+  z-index: 0;
+}
+.network-line.v1 { width: 1px; height: 40%; left: 50%; top: 10%; }
+.network-line.h1 { height: 1px; width: 30%; top: 50%; left: 20%; }
+.network-line.h2 { height: 1px; width: 30%; top: 50%; left: 50%; }
+.network-line.v2 { width: 1px; height: 40%; left: 50%; top: 50%; }
+.network-line.h3 { height: 1px; width: 30%; top: 90%; left: 35%; }
+
+
+/* ==========================================================================
+   06. IDEA TO MARKET
+   ========================================================================== */
+.idea-to-market {
+  background-color: var(--color-navy);
+  color: var(--color-white);
+}
+.idea-header {
+  margin-bottom: clamp(4rem, 8vw, 6rem);
+  text-align: center;
+}
+.idea-heading {
+  font-size: clamp(3rem, 5vw, 5rem);
+  line-height: 1.1;
+  font-weight: 500;
+  margin-top: 1.5rem;
+}
+
+.idea-ecosystem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.eco-level {
+  display: flex;
+  gap: clamp(1rem, 3vw, 2rem);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.eco-node {
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+.eco-node.highlight { background: var(--color-white); color: var(--color-navy); }
+.eco-node.outline { background: transparent; border-color: rgba(255,255,255,0.3); }
+.eco-node.blue { background: var(--color-blue); border-color: var(--color-blue); }
+
+.eco-path {
+  width: 1px;
+  height: clamp(30px, 5vw, 60px);
+  background: rgba(255,255,255,0.2);
+}
+.eco-path.split-3 { width: 200px; background: transparent; border-top: 1px solid rgba(255,255,255,0.2); border-left: 1px solid rgba(255,255,255,0.2); border-right: 1px solid rgba(255,255,255,0.2); height: 30px; position: relative; }
+.eco-path.split-3::after { content: ''; position: absolute; width: 1px; height: 100%; background: rgba(255,255,255,0.2); left: 50%; top: 0; }
+.eco-path.funnel { width: 300px; height: 40px; background: transparent; border-bottom: 1px solid rgba(255,255,255,0.2); border-left: 1px solid rgba(255,255,255,0.2); border-right: 1px solid rgba(255,255,255,0.2); position: relative;}
+.eco-path.funnel::after { content: ''; position: absolute; width: 1px; height: 20px; background: rgba(255,255,255,0.2); left: 50%; bottom: -20px; }
+.eco-path.straight-dashed { border-left: 1px dashed rgba(255,255,255,0.4); background: transparent; margin-top: 20px;}
+
+/* ==========================================================================
+   07. SUCCESS
+   ========================================================================== */
+.approach-success {
+  background-color: var(--color-background);
+  color: var(--color-navy);
+  text-align: center;
+}
+.success-header {
+  margin-bottom: clamp(4rem, 8vw, 6rem);
+}
+.success-heading {
+  font-size: clamp(3rem, 5vw, 5rem);
+  margin-top: 1.5rem;
+}
+.success-cascade {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+.success-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+.success-title {
+  font-size: clamp(2rem, 4vw, 4rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  opacity: 0.6;
+}
+.success-title.highlight {
+  opacity: 1;
+  color: var(--color-blue);
+}
+.success-arrow {
+  color: var(--color-text-muted);
+  font-size: 1.5rem;
+}
+
+/* ==========================================================================
+   08. PHILOSOPHY
+   ========================================================================== */
+.approach-philosophy {
+  background-color: var(--color-white);
+  color: var(--color-navy);
+  text-align: center;
+}
+.philosophy-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.philosophy-heading {
+  font-size: clamp(3rem, 6vw, 6rem);
+  line-height: 1.05;
+  font-weight: 500;
+  margin-top: 3rem;
+  letter-spacing: -0.03em;
+}
+
+/* ==========================================================================
+   09. CTA
+   ========================================================================== */
+.approach-cta {
+  background-color: var(--color-navy);
+  color: var(--color-white);
+}
+.approach-cta-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+@media (min-width: 768px) {
+  .approach-cta-content { grid-template-columns: 1fr 1fr; align-items: center; }
+}
+.approach-cta-heading {
+  font-size: clamp(3.5rem, 6vw, 6rem);
+  line-height: 1;
+  font-weight: 500;
+}
+.approach-cta-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.approach-cta-body .body-large {
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  color: rgba(255,255,255,0.8);
+  line-height: 1.4;
+}
+.cta-btn {
+  font-size: 1.125rem;
+}

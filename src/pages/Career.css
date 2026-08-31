@@ -1,0 +1,745 @@
+/* ==========================================================================
+   DIGIDOOR CAREER PAGE - GLOBAL REFINEMENT
+   ========================================================================== */
+
+.career-page {
+  background-color: var(--color-navy);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Base Spacing Rules */
+.section-padding {
+  padding-top: clamp(5rem, 8vw, 10rem);
+  padding-bottom: clamp(5rem, 8vw, 10rem);
+}
+
+/* Global button styles for career page */
+.btn-primary, .btn-secondary, .btn-tertiary {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  padding: 0;
+  transition: color 0.3s ease;
+  letter-spacing: 0.02em;
+}
+
+.btn-primary {
+  color: var(--color-blue);
+}
+
+.btn-secondary {
+  color: var(--color-white);
+  opacity: 0.8;
+}
+
+.btn-tertiary {
+  color: var(--color-blue);
+  font-size: 0.875rem;
+}
+
+.btn-primary .arrow, .btn-secondary .arrow, .btn-tertiary .arrow {
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.btn-primary:hover {
+  color: var(--color-blue-light);
+}
+
+.btn-secondary:hover {
+  color: var(--color-white);
+  opacity: 1;
+}
+
+.btn-tertiary:hover {
+  color: var(--color-blue-light);
+}
+
+.btn-primary:hover .arrow, .btn-secondary:hover .arrow, .btn-tertiary:hover .arrow {
+  transform: translateX(6px);
+}
+
+/* Typography Scales */
+.h1-hero {
+  font-size: clamp(4rem, 8vw, 8rem);
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+}
+
+.h2-section {
+  font-size: clamp(3rem, 5vw, 5.5rem);
+  line-height: 1.05;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.h3-sub {
+  font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+  line-height: 1.2;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* Animations */
+.reveal-element {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* ==========================================================================
+   01. CAREER HERO
+   ========================================================================== */
+.career-hero {
+  background-color: var(--color-navy);
+  color: var(--color-white);
+  padding-top: clamp(150px, 15vw, 200px);
+  position: relative;
+  overflow: hidden;
+}
+
+.career-hero-inner {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3rem, 5vw, 5rem);
+  position: relative;
+  z-index: 2;
+}
+
+.career-hero-label-wrapper .label {
+  color: var(--color-blue);
+}
+
+.career-hero-main {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+@media (min-width: 1024px) {
+  .career-hero-main {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+}
+
+.career-hero-heading {
+  color: var(--color-white);
+  font-size: clamp(4rem, 8vw, 8.5rem);
+  line-height: 0.95;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  max-width: 800px;
+}
+
+.career-hero-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  max-width: 400px;
+}
+
+.career-hero-body {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.125rem;
+}
+
+.career-hero-ctas {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Architectural Lines */
+.career-hero-decoration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.deco-line {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.deco-line.vertical.left {
+  width: 1px;
+  height: 100%;
+  left: clamp(20px, 5vw, 80px);
+}
+
+.deco-line.horizontal.bottom {
+  height: 1px;
+  width: 100%;
+  bottom: clamp(40px, 8vw, 120px);
+}
+
+.deco-coordinate {
+  position: absolute;
+  right: clamp(20px, 5vw, 80px);
+  bottom: clamp(10px, 4vw, 60px);
+  font-family: monospace;
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.2);
+  letter-spacing: 0.1em;
+}
+
+
+/* ==========================================================================
+   02. WHY DIGIDOOR
+   ========================================================================== */
+.career-why {
+  background-color: var(--color-background);
+  color: var(--color-navy);
+}
+
+.career-why-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+}
+
+@media (min-width: 1024px) {
+  .career-why-layout {
+    grid-template-columns: 1fr 1fr;
+    gap: 8rem;
+  }
+}
+
+.career-why-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.career-why-heading {
+  font-size: clamp(2.5rem, 4vw, 4.5rem);
+  line-height: 1.1;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.career-why-right {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-top: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .career-why-right {
+    padding-top: 6rem;
+  }
+}
+
+.career-why-divider {
+  width: 40px;
+  height: 2px;
+  background-color: var(--color-blue);
+  margin-bottom: 1.5rem;
+}
+
+.career-why-right .body {
+  font-size: 1.125rem;
+  color: var(--color-text);
+  max-width: 500px;
+}
+
+
+/* ==========================================================================
+   03. WHAT WE DO (DISCIPLINES)
+   ========================================================================== */
+.career-disciplines {
+  background-color: var(--color-white);
+  color: var(--color-navy);
+}
+
+.career-disciplines-header {
+  margin-bottom: clamp(4rem, 8vw, 6rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.career-disciplines-heading {
+  font-size: clamp(3rem, 5vw, 5.5rem);
+  line-height: 1.05;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.career-disciplines-list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid rgba(8, 43, 92, 0.1);
+}
+
+.discipline-row {
+  border-bottom: 1px solid rgba(8, 43, 92, 0.1);
+  cursor: pointer;
+  padding: clamp(2rem, 4vw, 3rem) 0;
+  outline: none;
+  transition: background-color 0.4s ease;
+}
+
+.discipline-header {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 3vw, 3rem);
+}
+
+.discipline-number {
+  font-family: monospace;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  transition: color 0.4s ease;
+  min-width: 2rem;
+}
+
+.discipline-title {
+  flex: 1;
+  font-size: clamp(1.25rem, 2.5vw, 2.5rem);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  transition: color 0.4s ease, transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.discipline-arrow {
+  font-size: 1.5rem;
+  color: var(--color-blue);
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.4s ease;
+}
+
+/* Hover State */
+@media (hover: hover) {
+  .discipline-row:hover .discipline-title {
+    color: var(--color-blue);
+    transform: translateX(10px);
+  }
+  .discipline-row:hover .discipline-number {
+    color: var(--color-blue);
+  }
+  .discipline-row:hover .discipline-arrow {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Expanded State */
+.discipline-row.expanded .discipline-title,
+.discipline-row.expanded .discipline-number {
+  color: var(--color-blue);
+}
+.discipline-row.expanded .discipline-arrow {
+  opacity: 1;
+  transform: rotate(90deg);
+}
+
+.discipline-body-wrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.discipline-row.expanded .discipline-body-wrapper {
+  grid-template-rows: 1fr;
+}
+
+.discipline-body {
+  overflow: hidden;
+  padding-left: clamp(3rem, 6vw, 5rem);
+}
+
+.discipline-body .body {
+  padding-top: 1.5rem;
+  max-width: 600px;
+  font-size: 1.125rem;
+  color: var(--color-text);
+}
+.discipline-body .body + .body {
+  padding-top: 1rem;
+}
+
+
+/* ==========================================================================
+   04. WORK YOU'LL TOUCH
+   ========================================================================== */
+.work-touch-section {
+  background-color: var(--color-navy);
+  color: var(--color-white);
+  overflow: hidden;
+}
+
+.work-touch-header {
+  margin-bottom: clamp(4rem, 8vw, 8rem);
+}
+.work-touch-header .label {
+  color: var(--color-blue);
+}
+
+.work-touch-typography {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.work-touch-row {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+.work-touch-row.left { justify-content: flex-start; }
+.work-touch-row.right { justify-content: flex-end; }
+
+.h1-massive {
+  font-size: clamp(3rem, 7vw, 7.5rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.h1-massive.solid {
+  color: var(--color-white);
+}
+
+.h1-massive.solid.blue {
+  color: var(--color-blue);
+}
+
+.h1-massive.outline {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+}
+
+@media (min-width: 768px) {
+  .h1-massive.outline {
+    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.3);
+  }
+}
+
+
+/* ==========================================================================
+   05. HOW WE WORK
+   ========================================================================== */
+.how-we-work-section {
+  background-color: var(--color-background);
+  color: var(--color-navy);
+}
+
+.how-we-work-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+}
+
+@media (min-width: 1024px) {
+  .how-we-work-layout {
+    grid-template-columns: 1fr 1fr;
+    gap: 8rem;
+  }
+}
+
+.how-we-work-left {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: sticky;
+  top: 150px;
+  align-self: start;
+}
+
+.how-we-work-heading {
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  line-height: 1.05;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.how-we-work-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+@media (min-width: 1024px) {
+  .how-we-work-list {
+    padding-top: 10rem;
+  }
+}
+
+.how-we-work-item {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.how-we-work-number {
+  font-size: 1rem;
+  font-family: monospace;
+  color: var(--color-blue);
+}
+
+.how-we-work-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-top: 1px solid rgba(8, 43, 92, 0.1);
+  padding-top: 1.5rem;
+}
+
+.how-we-work-title {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.how-we-work-desc {
+  color: var(--color-text);
+  font-size: 1.125rem;
+  max-width: 400px;
+}
+
+
+/* ==========================================================================
+   06. CULTURE
+   ========================================================================== */
+.culture-section {
+  background-color: var(--color-white);
+  color: var(--color-navy);
+}
+
+.culture-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+  gap: clamp(3rem, 6vw, 5rem);
+}
+
+.culture-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.culture-heading {
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  line-height: 1.05;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.culture-body {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.culture-body .body {
+  font-size: 1.125rem;
+  color: var(--color-text);
+}
+
+
+/* ==========================================================================
+   07. WHO WE LOOK FOR
+   ========================================================================== */
+.who-we-look-for-section {
+  background-color: var(--color-ice);
+  color: var(--color-navy);
+}
+
+.who-we-look-for-header {
+  margin-bottom: clamp(4rem, 6vw, 6rem);
+}
+
+.who-we-look-for-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .who-we-look-for-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem 3rem;
+  }
+}
+
+.who-item {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-top: 1px solid rgba(8, 43, 92, 0.1);
+  padding-top: 1.5rem;
+}
+
+.who-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.who-item .body {
+  color: var(--color-text);
+  font-size: 1rem;
+  max-width: 400px;
+}
+
+
+/* ==========================================================================
+   08. OPEN POSITIONS
+   ========================================================================== */
+.open-positions-section {
+  background-color: var(--color-background);
+  color: var(--color-navy);
+}
+
+.open-positions-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+}
+
+@media (min-width: 1024px) {
+  .open-positions-layout {
+    grid-template-columns: 1fr 2fr;
+    gap: 6rem;
+  }
+}
+
+.open-positions-left {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.open-positions-heading {
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  line-height: 1.05;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.open-positions-empty {
+  padding-top: 1rem;
+}
+
+.open-positions-empty .body {
+  font-size: 1.125rem;
+  color: var(--color-text);
+}
+
+/* Don't see your role */
+.dont-see-role {
+  margin-top: clamp(6rem, 10vw, 12rem);
+}
+
+.dont-see-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  border-top: 1px solid rgba(8, 43, 92, 0.1);
+  padding-top: clamp(4rem, 8vw, 8rem);
+}
+
+@media (min-width: 1024px) {
+  .dont-see-layout {
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+  }
+}
+
+.dont-see-heading {
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  line-height: 1.05;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.dont-see-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: flex-start;
+  max-width: 500px;
+}
+
+.dont-see-content .body {
+  font-size: 1.125rem;
+  color: var(--color-text);
+}
+
+
+/* ==========================================================================
+   09. JOIN US (FINAL CTA)
+   ========================================================================== */
+.join-us-section {
+  background-color: var(--color-navy);
+  color: var(--color-white);
+  padding-top: clamp(6rem, 10vw, 12rem);
+  padding-bottom: clamp(6rem, 10vw, 12rem);
+}
+
+.join-us-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.join-us-heading {
+  font-size: clamp(3.5rem, 7vw, 7.5rem);
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+.join-btn {
+  color: var(--color-white);
+  font-size: 1.25rem;
+}
+
+.join-btn:hover {
+  color: var(--color-blue);
+}
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-element {
+    transition: opacity 0.4s ease;
+    transform: none;
+  }
+  .discipline-title, .discipline-arrow, .work-touch-item h3 {
+    transition: color 0.2s ease, opacity 0.2s ease;
+    transform: none !important;
+  }
+}

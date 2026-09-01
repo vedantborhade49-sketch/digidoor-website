@@ -1,7 +1,7 @@
 export default function HomeWhy() {
   return (
-    <section className="home-why full-width-section bg-navy text-white diagonal-cut-top diagonal-cut-bottom">
-      <div className="arch-bg-grid"></div>
+    <section className="home-why full-width-section bg-navy text-white diagonal-cut-top diagonal-cut-bottom relative-overflow">
+      <div className="grid-overlay-dark"></div>
       
       <div className="container" style={{ padding: 'clamp(6rem, 10vw, 10rem) 0' }}>
         

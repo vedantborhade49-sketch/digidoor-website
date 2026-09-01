@@ -14,7 +14,8 @@ export default function HomeServices() {
   const [activeService, setActiveService] = useState(services[0].id);
 
   return (
-    <section className="home-services full-width-section bg-white text-navy">
+    <section className="home-services full-width-section bg-white text-navy relative-overflow">
+      <div className="grid-overlay-light"></div>
       <div className="container" style={{ padding: 'clamp(6rem, 10vw, 10rem) 0' }}>
         
         <div style={{ marginBottom: '4rem' }}>

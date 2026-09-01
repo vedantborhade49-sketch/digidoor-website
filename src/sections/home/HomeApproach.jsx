@@ -15,8 +15,8 @@ export default function HomeApproach() {
   const stepProgress = (progress * 5) % 1;
 
   return (
-    <section ref={ref} className="home-approach full-width-section bg-navy text-white diagonal-cut-top diagonal-cut-bottom">
-      <div className="arch-bg-grid"></div>
+    <section ref={ref} className="home-approach full-width-section bg-navy text-white diagonal-cut-top diagonal-cut-bottom relative-overflow">
+      <div className="grid-overlay-dark"></div>
       <div className="arch-detail" style={{ position: 'absolute', top: '20px', left: '20px' }}>DIGIDOOR / APPROACH_SYSTEM</div>
 
       <div className="container" style={{ padding: 'clamp(8rem, 12vw, 12rem) 0' }}>

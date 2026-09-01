@@ -260,15 +260,7 @@
    05. BEYOND CAMPAIGN
    ========================================================================== */
 .relative-overflow { position: relative; overflow: hidden; }
-.blueprint-grid {
-  position: absolute; inset: -20% -20%;
-  background-image: 
-    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-  background-size: 50px 50px;
-  z-index: 0;
-  pointer-events: none;
-}
+
 .beyond-layout { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr; gap: 4rem; }
 @media (min-width: 1024px) { .beyond-layout { grid-template-columns: 1fr 1fr; align-items: center; } }
 .beyond-content { max-width: 500px; }

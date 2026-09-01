@@ -2,7 +2,8 @@ import { useRef } from 'react';
 
 export default function HomeIntro() {
   return (
-    <section className="home-intro full-width-section bg-white text-navy">
+    <section className="home-intro full-width-section bg-white text-navy noise-overlay relative-overflow">
+      <div className="grid-overlay-light"></div>
       <div className="container" style={{ padding: 'clamp(6rem, 10vw, 10rem) 0' }}>
         
         <div className="home-intro-layout" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '2rem', maxWidth: '1000px', margin: '0 auto' }}>

@@ -18,11 +18,12 @@ export default function Capabilities() {
 
   return (
     <section ref={ref} className="work-capabilities full-width-section bg-ice text-navy section-padding relative-overflow">
+      <div className="grid-overlay-light"></div>
       <div className="container cap-layout">
         
         {/* Fixed Image on Left instead of Text */}
         <div className="cap-visual reveal-element desktop-only" style={{ position: 'relative', height: '100%', minHeight: '500px' }}>
-          <div style={{ position: 'sticky', top: '150px', width: '100%', aspectRatio: '4/5', backgroundColor: 'var(--color-navy)', overflow: 'hidden' }}>
+          <div style={{ position: 'sticky', top: '150px', width: '100%', aspectRatio: '16/9', maxHeight: '500px', backgroundColor: 'var(--color-navy)', overflow: 'hidden', borderRadius: '4px' }}>
             {capabilities.map((cap, idx) => (
               <img 
                 key={idx}

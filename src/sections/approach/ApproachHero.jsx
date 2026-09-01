@@ -16,7 +16,8 @@ export default function ApproachHero() {
   const expandProgress = Math.min(1, scrollPos / 300);
   
   return (
-    <section ref={ref} className="approach-hero full-width-section bg-white text-navy section-padding-lg">
+    <section ref={ref} className="approach-hero full-width-section bg-white text-navy section-padding-lg relative-overflow">
+      <div className="grid-overlay-light"></div>
       <div className="arch-detail" style={{ position: 'absolute', top: '120px', left: '5%' }}>01 / 07<br/>APPROACH</div>
       <div className="arch-detail" style={{ position: 'absolute', top: '120px', right: '5%' }}>SCROLL TO EXPLORE</div>
       

@@ -11,7 +11,8 @@ export default function WorkHero() {
   };
 
   return (
-    <section ref={ref} className="work-hero full-width-section bg-offwhite text-navy">
+    <section ref={ref} className="work-hero full-width-section bg-offwhite text-navy relative-overflow">
+      <div className="grid-overlay-light"></div>
       <div className="container work-hero-inner">
         <div className="work-hero-content">
           <div className="reveal-element">

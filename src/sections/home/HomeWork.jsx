@@ -26,7 +26,8 @@ const projects = [
 
 export default function HomeWork() {
   return (
-    <section className="home-work full-width-section bg-white text-navy">
+    <section className="home-work full-width-section bg-white text-navy noise-overlay relative-overflow">
+      <div className="grid-overlay-light"></div>
       <div className="container" style={{ paddingBottom: 'clamp(6rem, 10vw, 10rem)' }}>
         
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '4rem' }}>

@@ -120,6 +120,15 @@ html {
 }
 
 /* Utilities */
+.bg-navy { background-color: var(--color-navy); }
+.bg-ice { background-color: var(--color-ice); }
+.bg-white { background-color: var(--color-white); }
+.bg-transparent { background-color: transparent; }
+
+.text-navy { color: var(--color-navy); }
+.text-white { color: var(--color-white); }
+.text-blue { color: var(--color-blue); }
+
 .container {
   width: 100%;
   max-width: var(--container-max-width);
@@ -150,4 +159,55 @@ html {
   :root {
     --container-padding: 4rem;
   }
+}
+
+/* ==========================================================================
+   GLOBAL TEXTURES & OVERLAYS
+   ========================================================================== */
+
+.relative-overflow {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Dark Blueprint Grid (for bg-navy) */
+.grid-overlay-dark {
+  position: absolute;
+  inset: -20% -20%;
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Light Blueprint Grid (for bg-white or bg-ice) */
+.grid-overlay-light {
+  position: absolute;
+  inset: -20% -20%;
+  background-image: 
+    linear-gradient(rgba(8, 43, 92, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(8, 43, 92, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Cinematic Film Grain Noise */
+.noise-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+/* Ensure content sits above overlays */
+.container {
+  position: relative;
+  z-index: 1;
 }

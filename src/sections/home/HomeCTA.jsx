@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom';
 
 export default function HomeCTA() {
   return (
-    <section className="home-cta full-width-section bg-navy text-white diagonal-cut-top">
-      <div className="arch-bg-grid"></div>
+    <section className="home-cta full-width-section bg-navy text-white diagonal-cut-top relative-overflow noise-overlay">
+      <div className="grid-overlay-dark"></div>
       
       <div className="container" style={{ padding: 'clamp(8rem, 12vw, 12rem) 0', position: 'relative', zIndex: 2 }}>
         
@@ -28,7 +28,7 @@ export default function HomeCTA() {
             }}></div>
           </div>
           
-          <h2 className="display-heading" style={{ fontSize: 'clamp(3rem, 6vw, 6rem)', fontWeight: 500, lineHeight: 1, marginBottom: '2rem' }}>
+          <h2 className="display-heading" style={{ fontSize: 'clamp(3rem, 6vw, 6rem)', fontWeight: 500, lineHeight: 1, marginBottom: '2rem', color: 'var(--color-white)' }}>
             WHAT'S BEHIND<br/>
             YOUR NEXT DOOR?
           </h2>
@@ -37,7 +37,7 @@ export default function HomeCTA() {
             Let's find out.
           </p>
           
-          <Link to="/contact" className="btn btn-primary" style={{ backgroundColor: 'var(--color-blue)', color: 'var(--color-white)', borderColor: 'var(--color-blue)' }}>
+          <Link to="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '1rem 2rem', border: '1px solid var(--color-white)', color: 'var(--color-white)', textDecoration: 'none', fontWeight: 600, letterSpacing: '0.05em' }}>
             LET'S TALK &rarr;
           </Link>
           

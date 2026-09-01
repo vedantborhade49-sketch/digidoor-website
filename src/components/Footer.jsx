@@ -44,8 +44,8 @@ export default function Footer() {
           <div className="footer-column">
             <span className="footer-column-title">CONTACT</span>
             <ul className="footer-nav">
-              <li><a href="mailto:hello@[yourdomain].com">hello@[yourdomain].com</a></li>
-              <li><a href="tel:+910000000000">+91 [Your Phone Number]</a></li>
+              <li><a href="mailto:hello@digidoor.com">hello@digidoor.com</a></li>
+              <li><a href="tel:+917607607279">+91 760 760 7279</a></li>
             </ul>
           </div>
         </div>

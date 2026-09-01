@@ -53,8 +53,12 @@ export default function Navbar() {
   return (
     <header className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container container">
-        <Link to="/" className="navbar-logo" aria-label="Digidoor Home">
-          <img src="/logo.jpg" alt="DIGIDOOR" style={{ height: '40px', width: 'auto', mixBlendMode: 'multiply' }} />
+        <Link to="/" className="navbar-logo">
+          <img 
+            src={isScrolled ? "/logo.png" : "/logo-white.png"} 
+            alt="DIGIDOOR" 
+            style={{ height: '40px', width: 'auto' }} 
+          />
         </Link>
         
         <nav className="navbar-desktop-menu" aria-label="Main Navigation">

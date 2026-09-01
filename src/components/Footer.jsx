@@ -1,57 +1,59 @@
+import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './Footer.css';
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function Footer() {
+  const lineRef = useRef(null);
+
+  useEffect(() => {
+    if (lineRef.current) {
+      gsap.fromTo(lineRef.current, 
+        { scaleX: 0 }, 
+        { 
+          scaleX: 1, 
+          duration: 1.5, 
+          ease: 'power3.inOut',
+          scrollTrigger: {
+            trigger: lineRef.current,
+            start: 'top 90%',
+            once: true
+          }
+        }
+      );
+    }
+  }, []);
+
   return (
     <footer className="footer-section">
       <div className="footer-container container">
         
         <div className="footer-top">
-          <h2 className="footer-heading">Let's build<br />presence.</h2>
-          <a href="mailto:hello@digidoor.com" className="footer-email-link">
-            hello@digidoor.com
-          </a>
+          <span className="footer-logo">DIGIDOOR</span>
+          <h2 className="footer-tagline-main">WE BUILD PRESENCE.</h2>
+          <Link to="/contact" className="footer-cta">
+            LET'S TALK <span className="arrow">→</span>
+          </Link>
+        </div>
+
+        <div className="footer-divider-wrapper">
+          <div className="footer-divider" ref={lineRef}></div>
         </div>
         
-        <div className="footer-grid">
-          <div className="footer-col">
-            <span className="footer-label">Navigation</span>
-            <ul className="footer-links">
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/work">Our Work</Link></li>
-              <li><Link to="/approach">Approach</Link></li>
-              <li><Link to="/career">Career</Link></li>
-              <li><Link to="/contact">Contact</Link></li>
-            </ul>
-          </div>
-          
-          <div className="footer-col">
-            <span className="footer-label">Socials</span>
-            <ul className="footer-links">
-              <li><a href="#" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-              <li><a href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-            </ul>
-          </div>
-          
-          <div className="footer-col">
-            <span className="footer-label">Connect</span>
-            <ul className="footer-links">
-              <li><a href="tel:+917607607279">+91 760 760 7279</a></li>
-              <li>Mumbai, India</li>
-            </ul>
-          </div>
+        <div className="footer-nav">
+          <Link to="/work">WORK</Link>
+          <Link to="/expertise">EXPERTISE</Link>
+          <Link to="/approach">APPROACH</Link>
+          <Link to="/career">CAREER</Link>
+          <Link to="/contact">CONTACT</Link>
         </div>
 
         <div className="footer-bottom">
-          <div className="footer-brand">
-            <span className="footer-logo">DIGIDOOR</span>
-            <span className="footer-tagline">Real estate marketing, reimagined.</span>
-          </div>
-          <div className="footer-legal">
-            <span>© {new Date().getFullYear()} Digidoor</span>
-            <Link to="#">Privacy Policy</Link>
-            <Link to="#">Terms of Service</Link>
-          </div>
+          <span className="footer-copyright">© {new Date().getFullYear()} DIGIDOOR</span>
+          <span className="footer-location">INDIA</span>
         </div>
         
       </div>

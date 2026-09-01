@@ -97,8 +97,10 @@ export default function FrameSequenceCanvas({ imagesRef, progress }) {
   }, [imagesRef, progress]);
 
   return (
-    <div className="frame-sequence-canvas-wrapper" style={{ width: '100%', height: '100%', overflow: 'hidden' }}>
-      <canvas ref={canvasRef} style={{ display: 'block', width: '100%', height: '100%' }} />
+    <div className="frame-sequence-canvas-wrapper" style={{ width: '100%', height: '100%', overflow: 'hidden', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      <div style={{ width: '50%', height: '100%', position: 'relative' }}>
+        <canvas ref={canvasRef} style={{ display: 'block', width: '100%', height: '100%' }} />
+      </div>
     </div>
   );
 }

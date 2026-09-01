@@ -34,12 +34,12 @@ export default function ContactFormSection() {
         <div className="contact-info">
           <div className="contact-info-block">
             <span className="contact-info-label">EMAIL</span>
-            <a href="mailto:hello@[yourdomain].com" className="contact-info-value">hello@[yourdomain].com</a>
+            <a href="mailto:hello@digidoor.com" className="contact-info-value">hello@digidoor.com</a>
           </div>
           
           <div className="contact-info-block">
             <span className="contact-info-label">PHONE</span>
-            <a href="tel:+910000000000" className="contact-info-value">+91 [Your Phone Number]</a>
+            <a href="tel:+917607607279" className="contact-info-value">+91 760 760 7279</a>
           </div>
           
           <div className="contact-info-block">

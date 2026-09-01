@@ -32,7 +32,11 @@ export default function Footer() {
       <div className="footer-container container">
         
         <div className="footer-top">
-          <span className="footer-logo">DIGIDOOR</span>
+          <img 
+            src="/logo-white.png" 
+            alt="DIGIDOOR" 
+            className="footer-logo" 
+          />
           <h2 className="footer-tagline-main">WE BUILD PRESENCE.</h2>
           <Link to="/contact" className="footer-cta">
             LET'S TALK <span className="arrow">→</span>
@@ -44,11 +48,15 @@ export default function Footer() {
         </div>
         
         <div className="footer-nav">
-          <Link to="/work">WORK</Link>
-          <Link to="/expertise">EXPERTISE</Link>
-          <Link to="/approach">APPROACH</Link>
-          <Link to="/career">CAREER</Link>
-          <Link to="/contact">CONTACT</Link>
+          <div className="footer-nav-row">
+            <Link to="/work">WORK</Link>
+            <Link to="/expertise">EXPERTISE</Link>
+            <Link to="/approach">APPROACH</Link>
+          </div>
+          <div className="footer-nav-row">
+            <Link to="/career">CAREER</Link>
+            <Link to="/contact">CONTACT</Link>
+          </div>
         </div>
 
         <div className="footer-bottom">

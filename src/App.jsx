@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import CrazyFooter from './components/CrazyFooter';
 import ScrollToTop from './components/ScrollToTop';
 
 import Home from './pages/Home';
@@ -13,18 +13,20 @@ import NotFound from './pages/NotFound';
 function App() {
   return (
     <Router>
-      <ScrollToTop />
-      <Navbar />
-      <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/work" element={<Work />} />
-          <Route path="/approach" element={<Approach />} />
-          <Route path="/career" element={<Career />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-        <Footer />
+      <div className="app">
+        <ScrollToTop />
+        <Navbar />
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/work" element={<Work />} />
+            <Route path="/approach" element={<Approach />} />
+            <Route path="/career" element={<Career />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </main>
+        <CrazyFooter />
       </div>
     </Router>
   );

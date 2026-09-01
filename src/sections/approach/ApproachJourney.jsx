@@ -1,46 +1,67 @@
 import { useScrollProgress } from '../../hooks/useScrollProgress';
+import RevealText from '../../components/ui/RevealText';
 
 export const approachStages = [
   {
     number: "01",
     title: "UNDERSTAND",
-    headline: "Before we make anything,\nwe understand everything.",
+    headline: [
+      <span key="1">Before we make anything,</span>,
+      <span key="2">we understand <span className="accent-serif text-blue">everything.</span></span>
+    ],
     copy: "We start with the project, the market,\nthe audience, the competition and the\nbusiness objective.\n\nWhat is being built?\n\nWho is it for?\n\nWhy should anyone care?\n\nWhat does success actually look like?"
   },
   {
     number: "02",
     title: "DEFINE",
-    headline: "We find the opportunity\ninside the problem.",
+    headline: [
+      <span key="1">We find the opportunity</span>,
+      <span key="2">inside the <span className="accent-serif text-blue">problem.</span></span>
+    ],
     copy: "Research becomes clarity.\n\nWe identify the positioning,\naudience tension, opportunity and\nreason to believe.\n\nThis is where a project starts becoming\na brand with something meaningful to say."
   },
   {
     number: "03",
     title: "STRATEGIZE",
-    headline: "A clear strategy\ngives creativity somewhere to go.",
+    headline: [
+      <span key="1">A clear strategy gives</span>,
+      <span key="2">creativity <span className="accent-serif text-blue">somewhere to go.</span></span>
+    ],
     copy: "We turn insight into direction.\n\nPositioning, messaging, channel strategy,\ncampaign architecture and the path from\nattention to action.\n\nThe strategy becomes the filter\nfor every decision that follows."
   },
   {
     number: "04",
     title: "CREATE",
-    headline: "Then comes the idea.",
+    headline: [
+      <span key="1">Then comes the <span className="accent-serif text-blue">idea.</span></span>
+    ],
     copy: "This is where strategy becomes something\npeople can see, feel and remember.\n\nCampaign concepts.\nVisual identities.\nArt direction.\nCopy.\nContent.\nMotion.\n\nThe idea gives the strategy a voice."
   },
   {
     number: "05",
     title: "COMMUNICATE",
-    headline: "One idea.\nMany ways to experience it.",
+    headline: [
+      <span key="1">One <span className="accent-serif text-blue">idea.</span></span>,
+      <span key="2">Many ways to experience it.</span>
+    ],
     copy: "A campaign is bigger than one advertisement.\n\nThe central idea becomes a communication\nsystem across social, digital, content,\nwebsites, outdoor, launch assets and\neverywhere the audience meets the brand."
   },
   {
     number: "06",
     title: "ACTIVATE",
-    headline: "Good creative gets attention.\n\nSmart activation gets results.",
+    headline: [
+      <span key="1">Good creative gets attention.</span>,
+      <span key="2">Smart activation gets <span className="accent-serif text-blue">results.</span></span>
+    ],
     copy: "We put the work into the market.\n\nDigital campaigns, paid media, social,\nsearch, content, landing experiences and\nperformance marketing work together to\ncreate demand and action."
   },
   {
     number: "07",
     title: "MEASURE & GROW",
-    headline: "The launch isn't\nthe finish line.",
+    headline: [
+      <span key="1">The launch isn't</span>,
+      <span key="2">the <span className="accent-serif text-blue">finish line.</span></span>
+    ],
     copy: "We measure what happened.\n\nWhat worked?\nWhat didn't?\nWhere did people respond?\nWhere did they drop off?\nWhat can we improve?\n\nPerformance feeds learning.\nLearning feeds the next decision."
   }
 ];
@@ -70,11 +91,12 @@ export default function ApproachJourney() {
                   {activeStage.number} / {activeStage.title}
                 </span>
                 
-                <h2 key={`h2-${activeIndex}`} className="journey-heading animate-fade-up">
-                  {activeStage.headline.split('\n').map((line, i) => (
-                    <span key={i}>{line}<br/></span>
-                  ))}
-                </h2>
+                <RevealText 
+                  key={`h2-${activeIndex}`} 
+                  elementType="h2" 
+                  className="h1 journey-heading"
+                  text={activeStage.headline}
+                />
                 
                 <div key={`p-${activeIndex}`} className="journey-body body animate-fade-up-delay">
                   {activeStage.copy.split('\n').map((line, i) => (
@@ -178,11 +200,12 @@ export default function ApproachJourney() {
               
               <div className="mobile-journey-content">
                 <span className="label text-blue">{stage.title}</span>
-                <h3 className="h3" style={{ marginTop: '0.5rem', marginBottom: '1rem' }}>
-                  {stage.headline.split('\n').map((line, i) => (
-                    <span key={i}>{line}<br/></span>
-                  ))}
-                </h3>
+                <RevealText 
+                  elementType="h3" 
+                  className="h3" 
+                  style={{ marginTop: '0.5rem', marginBottom: '1rem' }}
+                  text={stage.headline}
+                />
                 <div className="body">
                   {stage.copy.split('\n').map((line, i) => (
                     <span key={i}>{line}<br/></span>

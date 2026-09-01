@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import RevealText from '../../components/ui/RevealText';
 
 export default function HomeCTA() {
   return (
@@ -28,18 +29,43 @@ export default function HomeCTA() {
             }}></div>
           </div>
           
-          <h2 className="display-heading" style={{ fontSize: 'clamp(3rem, 6vw, 6rem)', fontWeight: 500, lineHeight: 1, marginBottom: '2rem', color: 'var(--color-white)' }}>
-            WHAT'S BEHIND<br/>
-            YOUR NEXT DOOR?
-          </h2>
+          <RevealText 
+            elementType="h2" 
+            className="display-heading text-white" 
+            style={{ fontSize: 'clamp(4rem, 8vw, 8rem)' }}
+            text={[
+              <span key="1">WHAT'S BEHIND</span>,
+              <span key="2">YOUR NEXT <span className="accent-serif text-blue">DOOR?</span></span>
+            ]}
+          />
           
-          <p className="body" style={{ fontSize: '1.25rem', color: 'rgba(255,255,255,0.7)', marginBottom: '3rem' }}>
+          <p className="body" style={{ fontSize: '1.25rem', color: 'rgba(255,255,255,0.7)', margin: '2rem auto 4rem', maxWidth: '400px' }}>
             Let's find out.
           </p>
           
-          <Link to="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '1rem 2rem', border: '1px solid var(--color-white)', color: 'var(--color-white)', textDecoration: 'none', fontWeight: 600, letterSpacing: '0.05em' }}>
-            LET'S TALK &rarr;
+          <Link to="/contact" className="hover-cta-button" style={{ 
+            display: 'inline-flex', 
+            alignItems: 'center', 
+            gap: '0.75rem', 
+            color: 'var(--color-white)', 
+            textDecoration: 'none', 
+            fontWeight: 500, 
+            fontSize: '14px',
+            borderBottom: '1px solid rgba(255,255,255,0.3)',
+            paddingBottom: '0.5rem',
+            transition: 'all 0.3s ease'
+          }}>
+            LET'S TALK <span style={{ transition: 'transform 0.3s ease' }}>&rarr;</span>
           </Link>
+          
+          <style dangerouslySetInnerHTML={{__html: `
+            .hover-cta-button:hover {
+              border-bottom-color: var(--color-white) !important;
+            }
+            .hover-cta-button:hover span {
+              transform: translateX(5px);
+            }
+          `}} />
           
         </div>
         

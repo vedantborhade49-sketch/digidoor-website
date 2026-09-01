@@ -1,4 +1,6 @@
 import { useScrollReveal } from '../../hooks/useScrollReveal';
+import SectionEyebrow from '../../components/ui/SectionEyebrow';
+import RevealText from '../../components/ui/RevealText';
 
 export default function CareerHero() {
   const ref = useScrollReveal();
@@ -13,16 +15,20 @@ export default function CareerHero() {
   return (
     <section ref={ref} className="career-hero container section-padding">
       <div className="career-hero-inner">
-        <div className="reveal-element career-hero-label-wrapper">
-          <span className="label">CAREERS</span>
-        </div>
+        <SectionEyebrow number="01" title="CAREERS" className="mb-8" />
         
         <div className="career-hero-main">
-          <h1 className="reveal-element career-hero-heading">
-            Build work<br />
-            worth<br />
-            remembering.
-          </h1>
+          <RevealText 
+            elementType="h1" 
+            className="display-heading career-hero-heading text-uppercase" 
+            style={{ fontSize: 'clamp(3rem, 6vw, 6rem)', lineHeight: 1 }}
+            text={[
+              <span key="1">BUILD THINGS</span>,
+              <span key="2">WORTH OPENING.</span>,
+              <span key="3">WITH A LITTLE MORE</span>,
+              <span key="4" className="accent-serif text-blue text-lowercase" style={{ fontSize: '1.2em' }}>curiosity.</span>
+            ]}
+          />
           
           <div className="career-hero-aside">
             <p className="reveal-element body career-hero-body" style={{ transitionDelay: '0.1s' }}>

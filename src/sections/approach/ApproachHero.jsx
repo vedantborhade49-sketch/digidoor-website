@@ -1,5 +1,7 @@
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 import { useState, useEffect } from 'react';
+import RevealText from '../../components/ui/RevealText';
+import SectionEyebrow from '../../components/ui/SectionEyebrow';
 
 export default function ApproachHero() {
   const ref = useScrollReveal();
@@ -18,20 +20,22 @@ export default function ApproachHero() {
   return (
     <section ref={ref} className="approach-hero full-width-section bg-white text-navy section-padding-lg relative-overflow">
       <div className="grid-overlay-light"></div>
-      <div className="arch-detail" style={{ position: 'absolute', top: '120px', left: '5%' }}>01 / 07<br/>APPROACH</div>
-      <div className="arch-detail" style={{ position: 'absolute', top: '120px', right: '5%' }}>SCROLL TO EXPLORE</div>
+      <div className="arch-detail label tracking-wide" style={{ position: 'absolute', top: '120px', left: '5%' }}>01 / 07<br/>APPROACH</div>
+      <div className="arch-detail label tracking-wide" style={{ position: 'absolute', top: '120px', right: '5%' }}>SCROLL TO EXPLORE</div>
       
       <div className="container approach-hero-layout">
         
-        <div className="approach-hero-content reveal-element">
-          <div className="hero-top-label" style={{ display: 'flex', alignItems: 'center', gap: '1rem', opacity: expandProgress }}>
-            <div className="tiny-blue-line" style={{ width: `${expandProgress * 60}px`, height: '1px', background: 'var(--color-blue)' }}></div>
-            <span className="tiny-label">START WITH THE QUESTION</span>
-          </div>
-          <h1 className="h1 approach-hero-heading" style={{ marginTop: '2rem' }}>
-            We don't start<br />
-            with the answer.
-          </h1>
+        <div className="approach-hero-content">
+          <SectionEyebrow number="01" title="APPROACH" />
+          <RevealText 
+            elementType="h1" 
+            className="display-heading approach-hero-heading" 
+            style={{ marginTop: '2rem' }}
+            text={[
+              <span key="1">We don't start</span>,
+              <span key="2">with the <span className="accent-serif text-blue">answer.</span></span>
+            ]}
+          />
         </div>
 
         <div className="approach-hero-visual reveal-element" style={{ transitionDelay: '0.2s' }}>

@@ -1,4 +1,6 @@
 import { useRef } from 'react';
+import RevealText from '../../components/ui/RevealText';
+import SectionEyebrow from '../../components/ui/SectionEyebrow';
 
 export default function HomeIntro() {
   return (
@@ -8,20 +10,30 @@ export default function HomeIntro() {
         
         <div className="home-intro-layout" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '2rem', maxWidth: '1000px', margin: '0 auto' }}>
           
-          <div className="home-intro-top" style={{ display: 'flex', alignItems: 'center', gap: '1rem', opacity: 0.8 }}>
-            <span className="label text-blue">WHAT WE DO</span>
-            <div style={{ height: '1px', background: 'var(--color-blue)', width: '60px' }}></div>
-          </div>
+          <SectionEyebrow number="01" title="WHAT WE DO" className="mb-8" />
           
-          <h2 className="display-heading" style={{ fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', fontWeight: 500, lineHeight: 1.1, letterSpacing: '-0.02em' }}>
-            We connect real-world property<br />
-            with digital attention.
-          </h2>
+          <RevealText 
+            elementType="h2" 
+            className="display-heading mb-6" 
+            style={{ fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', fontWeight: 500, lineHeight: 1.1, letterSpacing: '-0.02em' }}
+            text={[
+              <span key="1">We connect real-world <span className="accent-serif text-blue">property</span></span>,
+              <span key="2">with digital attention.</span>
+            ]} 
+          />
           
-          <div className="home-intro-body" style={{ maxWidth: '600px', marginTop: '1rem' }}>
-            <p className="body" style={{ fontSize: '1.25rem' }}>
-              Digidoor is a real-estate marketing and creative agency. We build brand strategies, creative campaigns and digital experiences that turn projects into destinations.
-            </p>
+          <div className="home-intro-body" style={{ maxWidth: '800px', marginTop: '3rem' }}>
+            <RevealText 
+              elementType="p" 
+              className="body" 
+              style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', lineHeight: 1.4, color: 'var(--color-navy)', opacity: 0.8 }}
+              delay={0.2}
+              text={[
+                <span key="1">Digidoor is a real-estate marketing and <span className="accent-serif text-blue">creative</span> agency.</span>,
+                <span key="2">We build brand strategies, campaigns and digital</span>,
+                <span key="3">experiences that turn projects into <span className="accent-serif">destinations.</span></span>
+              ]}
+            />
           </div>
           
         </div>

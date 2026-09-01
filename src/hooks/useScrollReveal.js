@@ -15,13 +15,17 @@ export function useScrollReveal(options = { threshold: 0.1, rootMargin: '0px 0px
       options
     );
 
-    const elements = ref.current?.querySelectorAll('.reveal-element');
-    if (elements) {
+    const elements = Array.from(ref.current?.querySelectorAll('.reveal-element') || []);
+    if (ref.current?.classList.contains('reveal-element')) {
+      elements.push(ref.current);
+    }
+
+    if (elements.length > 0) {
       elements.forEach((el) => observer.observe(el));
     }
 
     return () => {
-      if (elements) {
+      if (elements.length > 0) {
         elements.forEach((el) => observer.unobserve(el));
       }
     };

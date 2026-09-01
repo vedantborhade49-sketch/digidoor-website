@@ -9,7 +9,18 @@ export default function ScrollFrameHero() {
   const [progress, setProgress] = useState(0);
   const [isReducedMotion, setIsReducedMotion] = useState(false);
   
+  const [wordIndex, setWordIndex] = useState(0);
+  const loadingWords = ["MARKETING", "CONTENT", "DIGITAL", "STRATEGY", "CREATIVE"];
+  
   const { imagesRef, isReady, loadProgress, totalFrames } = useFrameSequence();
+
+  // Cycle words continuously
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setWordIndex((prev) => (prev + 1) % loadingWords.length);
+    }, 400);
+    return () => clearInterval(interval);
+  }, [loadingWords.length]);
 
   // Handle prefers-reduced-motion
   useEffect(() => {
@@ -95,9 +106,11 @@ export default function ScrollFrameHero() {
         
         {/* Loading State or Canvas */}
         {!isReady ? (
-          <div className="hero-loading">
-            <span className="label" style={{ color: 'var(--color-navy)' }}>DIGIDOOR</span>
-            <div className="hero-loading-bar-container">
+          <div className="hero-loading" style={{ gap: '2rem', backgroundColor: '#F4F1EA' }}>
+            <h1 className="display-heading" style={{ color: 'var(--color-navy)', margin: 0, textAlign: 'center', transition: 'opacity 0.2s' }}>
+              {loadingWords[wordIndex]}
+            </h1>
+            <div className="hero-loading-bar-container" style={{ marginTop: 0 }}>
               <div 
                 className="hero-loading-bar-fill" 
                 style={{ transform: `scaleX(${loadProgress})` }}
@@ -107,6 +120,26 @@ export default function ScrollFrameHero() {
         ) : (
           <>
             <FrameSequenceCanvas imagesRef={imagesRef} progress={progress} />
+            
+            {/* The Creme Intro Screen that fades out on scroll */}
+            <div 
+              style={{
+                position: 'absolute',
+                inset: 0,
+                backgroundColor: 'transparent',
+                zIndex: 3,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                opacity: progress < 0.05 ? 1 - (progress / 0.05) : 0,
+                pointerEvents: 'none'
+              }}
+            >
+              <h1 className="display-heading" style={{ color: 'var(--color-navy)', margin: 0, textAlign: 'center' }}>
+                {loadingWords[wordIndex]}
+              </h1>
+            </div>
+
             <HeroOverlay progress={progress} totalFrames={totalFrames} />
           </>
         )}

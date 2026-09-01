@@ -95,10 +95,11 @@ export default function ScrollFrameHero() {
     };
   }, [isReducedMotion]);
 
-  // For reduced motion, we remove the 400vh scroll height and just make it a normal 100vh hero
+  // For reduced motion, we remove the long scroll height and just make it a normal 100vh hero
+  // Otherwise, calculate height so that 100px of scroll = 5 frames (20px per frame)
   const containerStyle = isReducedMotion 
     ? { height: '100vh' } 
-    : { height: '400vh' };
+    : { height: `calc(100vh + ${totalFrames * 20}px)` };
 
   return (
     <section ref={containerRef} className="scroll-frame-hero-container" style={containerStyle}>

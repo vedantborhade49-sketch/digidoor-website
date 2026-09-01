@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
+import { useFrameSequence } from './hero/useFrameSequence';
 import './Navbar.css';
 
 const navLinks = [
@@ -14,6 +15,7 @@ export default function Navbar() {
   const [isHidden, setIsHidden] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const { totalFrames } = useFrameSequence();
 
   // Handle scroll to change navbar visual state
   useEffect(() => {
@@ -21,8 +23,8 @@ export default function Navbar() {
       setIsScrolled(window.scrollY > 20);
       
       if (location.pathname === '/') {
-        // Hero is 400vh tall. Unhide navbar when user scrolls past 300vh
-        const threshold = window.innerHeight * 3;
+        // Hero unpins after scrolling past (totalFrames * 20) pixels
+        const threshold = totalFrames * 20;
         setIsHidden(window.scrollY < threshold);
       } else {
         setIsHidden(false);

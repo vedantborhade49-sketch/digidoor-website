@@ -1,0 +1,112 @@
+/* ==========================================================================
+   DIGIDOOR HOME PAGE STYLES
+   ========================================================================== */
+
+.home-page {
+  background-color: var(--color-background);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ==========================================================================
+   UTILITIES (Shared with Approach)
+   ========================================================================== */
+.arch-bg-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: 0;
+}
+
+.arch-detail {
+  font-family: monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  color: rgba(255,255,255,0.4);
+  pointer-events: none;
+}
+
+.diagonal-cut-bottom {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 5vw), 0 100%);
+  padding-bottom: clamp(10rem, 15vw, 14rem) !important;
+  margin-bottom: -5vw;
+}
+
+.diagonal-cut-top {
+  clip-path: polygon(0 5vw, 100% 0, 100% 100%, 0 100%);
+  padding-top: clamp(10rem, 15vw, 14rem) !important;
+  margin-top: -5vw;
+}
+
+/* ==========================================================================
+   HOME WORK SECTION
+   ========================================================================== */
+.home-project-card {
+  transition: transform 0.3s ease;
+}
+.home-project-card:hover {
+  transform: translateY(-5px);
+}
+.home-project-card a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+.home-project-card img {
+  transition: transform 0.5s ease;
+}
+.home-project-card:hover img {
+  transform: scale(1.03);
+}
+
+@media (max-width: 768px) {
+  .home-work-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .home-project-card {
+    grid-column: 1 / -1 !important;
+  }
+  .home-project-card > a > div {
+    margin-top: 0 !important;
+  }
+}
+
+/* ==========================================================================
+   HOME APPROACH (SVG Animations)
+   ========================================================================== */
+.home-approach-visual {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  aspect-ratio: 1;
+  position: relative;
+}
+
+.svg-label {
+  font-family: monospace;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  transition: opacity 0.3s ease;
+}
+
+.svg-label.font-bold {
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   HOME SERVICES
+   ========================================================================== */
+.service-item h3 {
+  transition: color 0.3s ease;
+}
+.service-item:hover h3 {
+  color: var(--color-blue);
+}
+
+@media (max-width: 1023px) {
+  .desktop-only { display: none !important; }
+}

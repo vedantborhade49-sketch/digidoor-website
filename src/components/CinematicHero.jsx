@@ -4,44 +4,58 @@ import { useImageSequence } from '../hooks/useImageSequence';
 import ScrollSequence from './ScrollSequence';
 import './CinematicHero.css';
 
+const narrativeSequence = [
+  "Real Estate.",
+  "Architecture.",
+  "Property Marketing.",
+  "Campaign.",
+  "Digital Experience.",
+  "DIGIDOOR."
+];
+
 export default function CinematicHero() {
-  const containerRef = useRef(null);
-  const progress = useScrollProgress(containerRef);
+  const { ref: containerRef, progress } = useScrollProgress();
   const { images, progress: loadProgress, isReady } = useImageSequence();
 
-  // Typography Timing Logic
-  // 0-20% hidden
-  // 20-45% gradually appears
-  // 45-75% fully visible
-  // 75-100% gradually fades/moves away
+  // Progress logic for narrative sequence
+  // The door sequence is roughly 0 to 1.
+  // We want the text to sequence as the door opens and we move through.
+  
+  // Wait until the door starts opening (around progress 0.2)
+  // Text sequences from 0.2 to 0.8
+  const textProgressStart = 0.2;
+  const textProgressEnd = 0.8;
+  const sequenceLength = narrativeSequence.length;
+  
+  let currentWordIndex = -1;
   let textOpacity = 0;
-  if (progress > 0.2 && progress <= 0.45) {
-    textOpacity = (progress - 0.2) / 0.25;
-  } else if (progress > 0.45 && progress <= 0.75) {
-    textOpacity = 1;
-  } else if (progress > 0.75) {
-    textOpacity = Math.max(0, 1 - (progress - 0.75) / 0.25);
+  
+  if (progress > textProgressStart && progress < textProgressEnd) {
+    const normalizedProgress = (progress - textProgressStart) / (textProgressEnd - textProgressStart);
+    currentWordIndex = Math.floor(normalizedProgress * sequenceLength);
+    
+    // Calculate fade in/out for each word
+    const wordProgress = (normalizedProgress * sequenceLength) % 1;
+    // Fade in 0-0.2, stay 0.2-0.8, fade out 0.8-1.0
+    if (wordProgress < 0.2) textOpacity = wordProgress / 0.2;
+    else if (wordProgress > 0.8) textOpacity = 1 - ((wordProgress - 0.8) / 0.2);
+    else textOpacity = 1;
+  } else if (progress >= textProgressEnd) {
+    // Keep the final word "DIGIDOOR" on screen for a bit before fading out completely
+    currentWordIndex = sequenceLength - 1;
+    if (progress < 0.95) {
+      textOpacity = 1;
+    } else {
+      textOpacity = Math.max(0, 1 - (progress - 0.95) / 0.05);
+    }
   }
 
-  let textTranslate = 20; // start slightly below
-  if (progress > 0.2 && progress <= 0.45) {
-    textTranslate = 20 - ((progress - 0.2) / 0.25) * 20;
-  } else if (progress > 0.45 && progress <= 0.75) {
-    textTranslate = 0;
-  } else if (progress > 0.75) {
-    textTranslate = -((progress - 0.75) / 0.25) * 40; // moves up as it fades out
-  } else {
-    textTranslate = 20;
-  }
-
-  // Scroll Indicator Timing (disappears > 0.05)
   const scrollIndicatorOpacity = progress > 0.05 ? 0 : 1 - (progress / 0.05);
 
   return (
     <section ref={containerRef} className="cinematic-hero-container">
       <div className="cinematic-hero-sticky">
         
-        {/* Image Sequence Canvas Engine */}
         <div className="cinematic-hero-canvas-wrapper">
           {isReady ? (
             <ScrollSequence images={images} progress={progress} />
@@ -55,27 +69,25 @@ export default function CinematicHero() {
           )}
         </div>
 
-        {/* Hero Typography Overlay */}
-        {isReady && (
+        {isReady && currentWordIndex >= 0 && (
           <div 
             className="cinematic-hero-content container"
             style={{ 
               opacity: textOpacity, 
-              transform: `translateY(${textTranslate}px)`,
-              willChange: 'opacity, transform'
+              willChange: 'opacity',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              height: '100%',
+              pointerEvents: 'none'
             }}
           >
-            <span className="label cinematic-label">DIGIDOOR</span>
-            <h1 className="display-heading cinematic-heading">
-              Marketing spaces<br />that move people.
+            <h1 className="display-heading cinematic-heading text-center">
+              {narrativeSequence[currentWordIndex]}
             </h1>
-            <p className="body cinematic-subtitle">
-              Strategy, creativity and digital experiences<br />built for real estate.
-            </p>
           </div>
         )}
         
-        {/* Scroll Indicator */}
         {isReady && (
           <div 
             className="cinematic-scroll-indicator"
@@ -89,7 +101,6 @@ export default function CinematicHero() {
           </div>
         )}
         
-        {/* Gradient fade to blend with the subsequent page sections */}
         <div className="cinematic-hero-fade"></div>
       </div>
     </section>

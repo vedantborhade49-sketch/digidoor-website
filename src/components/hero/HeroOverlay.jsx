@@ -19,20 +19,7 @@ export default function HeroOverlay({ progress, totalFrames }) {
   return (
     <div className="hero-overlay container" style={{ pointerEvents: 'none' }}>
       
-      {/* Outro Narrative */}
-      <div 
-        className="hero-text-block outro-text"
-        style={{ 
-          opacity: outroOpacity, 
-          willChange: 'opacity' 
-        }}
-      >
-        <h1 className="display-heading text-center" style={{ margin: '0 auto' }}>
-          CREATIVE.<br/>
-          DIGITAL.<br/>
-          EXPERIENCE.
-        </h1>
-      </div>
+
 
       {/* Scroll to Enter Indicator */}
       <div 

@@ -43,8 +43,8 @@ const generateDemoFrames = (frameCount) => {
 
 // Vite's import.meta.glob can scan directories at build time.
 // We scan both desktop and mobile frame directories.
-const desktopFramesGlob = import.meta.glob('/public/assets/hero/frames/*.webp', { query: '?url', import: 'default', eager: true });
-const mobileFramesGlob = import.meta.glob('/public/assets/hero/frames-mobile/*.webp', { query: '?url', import: 'default', eager: true });
+const desktopFramesGlob = import.meta.glob('/public/assets/hero/frames/*.jpg', { query: '?url', import: 'default', eager: true });
+const mobileFramesGlob = import.meta.glob('/public/assets/hero/frames-mobile/*.jpg', { query: '?url', import: 'default', eager: true });
 
 function extractUrlsFromGlob(globResult) {
   // Extract URLs and sort them numerically based on the filename

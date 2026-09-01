@@ -121,24 +121,7 @@ export default function ScrollFrameHero() {
           <>
             <FrameSequenceCanvas imagesRef={imagesRef} progress={progress} />
             
-            {/* The Creme Intro Screen that fades out on scroll */}
-            <div 
-              style={{
-                position: 'absolute',
-                inset: 0,
-                backgroundColor: 'transparent',
-                zIndex: 3,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                opacity: progress < 0.05 ? 1 - (progress / 0.05) : 0,
-                pointerEvents: 'none'
-              }}
-            >
-              <h1 className="display-heading" style={{ color: 'var(--color-navy)', margin: 0, textAlign: 'center' }}>
-                {loadingWords[wordIndex]}
-              </h1>
-            </div>
+
 
             <HeroOverlay progress={progress} totalFrames={totalFrames} />
           </>

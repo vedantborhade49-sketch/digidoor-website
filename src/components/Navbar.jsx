@@ -11,23 +11,33 @@ const navLinks = [
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
 
   // Handle scroll to change navbar visual state
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setIsScrolled(true);
+      setIsScrolled(window.scrollY > 20);
+      
+      if (location.pathname === '/') {
+        // Hero is 400vh tall. Unhide navbar when user scrolls past 300vh
+        const threshold = window.innerHeight * 3;
+        setIsHidden(window.scrollY < threshold);
       } else {
-        setIsScrolled(false);
+        setIsHidden(false);
       }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll, { passive: true });
     handleScroll(); // Check on mount
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
+  }, [location.pathname]);
 
   // Prevent background scroll when mobile menu is open
   useEffect(() => {
@@ -51,7 +61,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
+    <header className={`navbar ${isScrolled ? 'scrolled' : ''} ${isHidden ? 'hidden' : ''}`}>
       <div className="navbar-container container">
         <Link to="/" className="navbar-logo">
           <img 

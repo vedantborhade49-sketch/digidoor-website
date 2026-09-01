@@ -1,13 +1,5 @@
 export default function HeroOverlay({ progress, totalFrames }) {
-  // Determine opacity states for typography narrative
-  // 0% - 20%: "DIGIDOOR - We make real estate impossible to overlook."
-  let introOpacity = 0;
-  if (progress < 0.15) {
-    introOpacity = 1;
-  } else if (progress < 0.25) {
-    introOpacity = 1 - ((progress - 0.15) / 0.10);
-  }
-  
+
   // 75% - 100%: "CREATIVE / DIGITAL / EXPERIENCE"
   let outroOpacity = 0;
   if (progress > 0.75 && progress < 0.85) {
@@ -27,22 +19,6 @@ export default function HeroOverlay({ progress, totalFrames }) {
   return (
     <div className="hero-overlay container" style={{ pointerEvents: 'none' }}>
       
-      {/* Intro Narrative */}
-      <div 
-        className="hero-text-block intro-text"
-        style={{ 
-          opacity: introOpacity, 
-          willChange: 'opacity' 
-        }}
-      >
-        <span className="label">DIGIDOOR</span>
-        <h1 className="display-heading">
-          We build ideas,<br/>
-          campaigns and digital experiences<br/>
-          that move real estate forward.
-        </h1>
-      </div>
-
       {/* Outro Narrative */}
       <div 
         className="hero-text-block outro-text"
